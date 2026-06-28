@@ -1,0 +1,221 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Alprogcitra1.MainPage"
+             Title="Login">
+
+    <Grid>
+        <!-- ============================================================ -->
+        <!-- BACKGROUND: Gradient Purple → Blue                          -->
+        <!-- ============================================================ -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#1A0533" Offset="0.0" />
+                <GradientStop Color="#2D1B69" Offset="0.3" />
+                <GradientStop Color="#1E3A5F" Offset="0.7" />
+                <GradientStop Color="#0F2027" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- ============================================================ -->
+        <!-- DEKORASI: Lingkaran cahaya (Glow orbs)                      -->
+        <!-- ============================================================ -->
+        <BoxView CornerRadius="150"
+                 WidthRequest="300" HeightRequest="300"
+                 HorizontalOptions="Start" VerticalOptions="Start"
+                 Margin="-80,-80,0,0"
+                 Opacity="0.15">
+            <BoxView.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#8B5CF6" Offset="0.0" />
+                    <GradientStop Color="Transparent" Offset="1.0" />
+                </RadialGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <BoxView CornerRadius="200"
+                 WidthRequest="400" HeightRequest="400"
+                 HorizontalOptions="End" VerticalOptions="End"
+                 Margin="0,0,-100,-100"
+                 Opacity="0.12">
+            <BoxView.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#3B82F6" Offset="0.0" />
+                    <GradientStop Color="Transparent" Offset="1.0" />
+                </RadialGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <BoxView CornerRadius="100"
+                 WidthRequest="200" HeightRequest="200"
+                 HorizontalOptions="Center" VerticalOptions="Start"
+                 Margin="0,100,0,0"
+                 Opacity="0.08">
+            <BoxView.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#14B8A6" Offset="0.0" />
+                    <GradientStop Color="Transparent" Offset="1.0" />
+                </RadialGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <!-- ============================================================ -->
+        <!-- KONTEN UTAMA: Login Card                                    -->
+        <!-- ============================================================ -->
+        <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
+            <Border StrokeShape="RoundRectangle 20"
+                    StrokeThickness="1"
+                    Padding="35"
+                    WidthRequest="420"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1E1E2E" Offset="0.0" />
+                        <GradientStop Color="#252540" Offset="0.5" />
+                        <GradientStop Color="#1A1A30" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Stroke>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#6C3CE1" Offset="0.0" />
+                        <GradientStop Color="#3B82F6" Offset="0.5" />
+                        <GradientStop Color="#14B8A6" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Stroke>
+                <Border.Shadow>
+                    <Shadow Brush="#6C3CE1" Offset="0,8" Radius="30" Opacity="0.3" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="18">
+
+                    <!-- Logo / Ikon Medis -->
+                    <Border StrokeShape="RoundRectangle 40"
+                            StrokeThickness="2"
+                            WidthRequest="80" HeightRequest="80"
+                            HorizontalOptions="Center"
+                            BackgroundColor="#2D1B69">
+                        <Border.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#8B5CF6" Offset="0.0" />
+                                <GradientStop Color="#3B82F6" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <Label Text="🩸" FontSize="36" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+
+                    <!-- Title -->
+                    <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                        <Label Text="Sistem Keamanan"
+                               FontSize="28" FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               TextColor="White" />
+                        <Label HorizontalOptions="Center"
+                               FontSize="13"
+                               TextColor="#A78BFA">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="🔒 " />
+                                    <Span Text="Portal Akses Sistem Monitoring Diabetes" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+
+                    <!-- Divider dengan gradient -->
+                    <BoxView HeightRequest="2" HorizontalOptions="Fill" CornerRadius="1">
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Color="Transparent" Offset="0.0" />
+                                <GradientStop Color="#6C3CE1" Offset="0.3" />
+                                <GradientStop Color="#3B82F6" Offset="0.5" />
+                                <GradientStop Color="#14B8A6" Offset="0.7" />
+                                <GradientStop Color="Transparent" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+
+                    <!-- Username Field -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="USERNAME" FontSize="11" FontAttributes="Bold"
+                               TextColor="#A78BFA" CharacterSpacing="1.5" Margin="5,0,0,0"/>
+                        <Border StrokeShape="RoundRectangle 12"
+                                StrokeThickness="1"
+                                Stroke="#3B3B5C"
+                                BackgroundColor="#16162A"
+                                Padding="12,4">
+                            <Entry x:Name="EntryUsername"
+                                   Placeholder="Masukkan Username"
+                                   PlaceholderColor="#64748B"
+                                   TextColor="White"
+                                   BackgroundColor="Transparent"
+                                   FontSize="15" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Password Field -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="PASSWORD" FontSize="11" FontAttributes="Bold"
+                               TextColor="#A78BFA" CharacterSpacing="1.5" Margin="5,0,0,0"/>
+                        <Border StrokeShape="RoundRectangle 12"
+                                StrokeThickness="1"
+                                Stroke="#3B3B5C"
+                                BackgroundColor="#16162A"
+                                Padding="12,4">
+                            <Entry x:Name="EntryPassword"
+                                   Placeholder="Masukkan Password"
+                                   PlaceholderColor="#64748B"
+                                   TextColor="White"
+                                   IsPassword="True"
+                                   BackgroundColor="Transparent"
+                                   FontSize="15" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Login Button -->
+                    <Button Text="🔐  MASUK SISTEM"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            TextColor="White"
+                            CornerRadius="14"
+                            HeightRequest="52"
+                            Clicked="OnLoginClicked"
+                            Margin="0,8,0,0">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Color="#6C3CE1" Offset="0.0" />
+                                <GradientStop Color="#3B82F6" Offset="0.5" />
+                                <GradientStop Color="#14B8A6" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Shadow>
+                            <Shadow Brush="#6C3CE1" Offset="0,4" Radius="15" Opacity="0.4" />
+                        </Button.Shadow>
+                    </Button>
+
+                    <!-- Register Link -->
+                    <Button Text="Belum punya akun? Daftar di sini"
+                            BackgroundColor="Transparent"
+                            TextColor="#7DD3FC"
+                            FontSize="13"
+                            Clicked="OnGoToRegisterClicked" />
+
+                    <!-- Footer Badge -->
+                    <Border StrokeShape="RoundRectangle 8"
+                            StrokeThickness="0"
+                            BackgroundColor="#1A1A30"
+                            Padding="10,6"
+                            HorizontalOptions="Center">
+                        <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Label Text="🧬" FontSize="12" VerticalOptions="Center" />
+                            <Label Text="Powered by NLP • Fuzzy Logic • ANN"
+                                   FontSize="10"
+                                   TextColor="#64748B"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
+        </ScrollView>
+    </Grid>
+</ContentPage>

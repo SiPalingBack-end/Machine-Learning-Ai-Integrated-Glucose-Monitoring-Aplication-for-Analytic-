@@ -1,0 +1,482 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Alprogcitra1.MainDashboardPage"
+             Title="Diabetes Risk ML Dashboard">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0.3,1">
+            <GradientStop Color="#0F172A" Offset="0.0" />
+            <GradientStop Color="#1E293B" Offset="0.5" />
+            <GradientStop Color="#0F172A" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+        <!-- ============================================================ -->
+        <!-- LAYER 1: Dashboard Utama (Scrollable)                       -->
+        <!-- ============================================================ -->
+        <ScrollView x:Name="MainScrollView">
+            <VerticalStackLayout Padding="20" Spacing="18">
+
+                <!-- ======== HEADER ======== -->
+                <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                    <VerticalStackLayout>
+                        <Label Text="Monitoring Pasien &amp; Analisis ML"
+                               FontSize="22" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="Sistem Prediksi Diabetes Berbasis Sinyal Analog"
+                               FontSize="13" TextColor="#7DD3FC"/>
+                    </VerticalStackLayout>
+                    <Border StrokeShape="RoundRectangle 10" Padding="10,6" StrokeThickness="0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Color="#10B981" Offset="0.0" />
+                                <GradientStop Color="#14B8A6" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Shadow>
+                            <Shadow Brush="#10B981" Offset="0,2" Radius="8" Opacity="0.4" />
+                        </Border.Shadow>
+                        <Label Text="● ADC Connected" TextColor="White" FontAttributes="Bold" FontSize="11"/>
+                    </Border>
+                </FlexLayout>
+
+                <!-- ======== PROFIL PASIEN ======== -->
+                <Border StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="16">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1E293B" Offset="0.0" />
+                            <GradientStop Color="#253449" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#6C3CE1" Offset="0.0" />
+                            <GradientStop Color="#3B82F6" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Stroke>
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="👤" FontSize="14"/>
+                            <Label Text="PROFIL PASIEN" FontSize="11" FontAttributes="Bold" TextColor="#A78BFA" CharacterSpacing="1" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <BoxView HeightRequest="1" HorizontalOptions="Fill">
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="Transparent" Offset="0.0" />
+                                    <GradientStop Color="#6C3CE1" Offset="0.5" />
+                                    <GradientStop Color="Transparent" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+
+                        <Grid RowDefinitions="Auto" ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="Nama Pasien" FontSize="11" TextColor="#94A3B8"/>
+                                <Label Text="Budi " FontSize="15" FontAttributes="Bold" TextColor="White"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="ID / Umur" FontSize="11" TextColor="#94A3B8"/>
+                                <Label Text="ID-98231 / 45 Thn" FontSize="15" FontAttributes="Bold" TextColor="White"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ======== METRIK CARDS: Detak Jantung + Glukosa ======== -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+
+                    <!-- Card Detak Jantung -->
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="16">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#1E293B" Offset="0.0" />
+                                <GradientStop Color="#2A1B3D" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#EF4444" Offset="0.0" />
+                                <GradientStop Color="#F43F5E" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <Border.Shadow>
+                            <Shadow Brush="#EF4444" Offset="0,4" Radius="12" Opacity="0.2" />
+                        </Border.Shadow>
+                        <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                                <Label Text="❤️" FontSize="13" VerticalOptions="Center"/>
+                                <Label Text="DETAK JANTUNG" FontSize="10" FontAttributes="Bold" TextColor="#FCA5A5" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
+                                <Label x:Name="LabelHeartRate" Text="78" FontSize="36" FontAttributes="Bold" TextColor="#F87171"/>
+                                <Label Text=" bpm" FontSize="12" TextColor="#94A3B8" Margin="0,0,0,6" VerticalOptions="End"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Card Estimasi Glukosa -->
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="16">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#1E293B" Offset="0.0" />
+                                <GradientStop Color="#1B2D4A" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#3B82F6" Offset="0.0" />
+                                <GradientStop Color="#6C3CE1" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <Border.Shadow>
+                            <Shadow Brush="#3B82F6" Offset="0,4" Radius="12" Opacity="0.2" />
+                        </Border.Shadow>
+                        <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                                <Label Text="🩸" FontSize="13" VerticalOptions="Center"/>
+                                <Label Text="ESTIMASI GLUKOSA" FontSize="10" FontAttributes="Bold" TextColor="#93C5FD" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
+                                <Label x:Name="LabelBloodSugar" Text="105" FontSize="36" FontAttributes="Bold" TextColor="#60A5FA"/>
+                                <Label Text=" mg/dL" FontSize="12" TextColor="#94A3B8" Margin="0,0,0,6" VerticalOptions="End"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- ======== GRAFIK SINYAL BIOMEDIS ======== -->
+                <Border StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="16">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1E293B" Offset="0.0" />
+                            <GradientStop Color="#253449" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#14B8A6" Offset="0.0" />
+                            <GradientStop Color="#10B981" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Stroke>
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="📈" FontSize="13" VerticalOptions="Center"/>
+                            <Label Text="GRAFIK SINYAL BIOMEDIS REAL-TIME (ADC INPUT)" FontSize="10" FontAttributes="Bold" TextColor="#5EEAD4" CharacterSpacing="0.5" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <BoxView HeightRequest="1" HorizontalOptions="Fill">
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="Transparent" Offset="0.0" />
+                                    <GradientStop Color="#14B8A6" Offset="0.5" />
+                                    <GradientStop Color="Transparent" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" Padding="0">
+                            <GraphicsView x:Name="SignalCanvas" HeightRequest="150" HorizontalOptions="Fill" BackgroundColor="#0F172A"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ======== HASIL PREDIKSI ML ======== -->
+                <Border x:Name="MlRiskBorder" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="16">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#059669" Offset="0.0" />
+                            <GradientStop Color="#10B981" Offset="0.5" />
+                            <GradientStop Color="#14B8A6" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Shadow>
+                        <Shadow Brush="#10B981" Offset="0,6" Radius="20" Opacity="0.3" />
+                    </Border.Shadow>
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="3">
+                            <HorizontalStackLayout Spacing="4">
+                                <Label Text="🧠" FontSize="12" VerticalOptions="Center"/>
+                                <Label Text="HASIL PREDIKSI RISIKO DIABETES (ML)" FontSize="10" FontAttributes="Bold" TextColor="White" Opacity="0.85" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                            <Label x:Name="LabelMlResult" Text="RISIKO RENDAH (NORMAL)" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                            <Label x:Name="LabelConfidence" Text="94.2%" FontSize="26" FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="Confidence" FontSize="10" TextColor="White" Opacity="0.8" HorizontalOptions="End"/>
+                        </VerticalStackLayout>
+
+                        <Label Grid.Row="1" Grid.ColumnSpan="2" x:Name="LabelMlDesc" 
+                               Text="Sinyal fisiologis dan fitur klinis pasien berada dalam batas normal." 
+                               FontSize="12" TextColor="White" Margin="0,10,0,0" Opacity="0.9"/>
+                    </Grid>
+                </Border>
+
+                <!-- ======== DETAIL FUZZY LOGIC ======== -->
+                <Border StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="16">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1E293B" Offset="0.0" />
+                            <GradientStop Color="#253449" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#F59E0B" Offset="0.0" />
+                            <GradientStop Color="#EF4444" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Stroke>
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="🔬" FontSize="13" VerticalOptions="Center"/>
+                            <Label Text="ANALISIS FUZZY LOGIC (TSUKAMOTO)" FontSize="10" FontAttributes="Bold" TextColor="#FBBF24" CharacterSpacing="0.5" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <BoxView HeightRequest="1" HorizontalOptions="Fill">
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="Transparent" Offset="0.0" />
+                                    <GradientStop Color="#F59E0B" Offset="0.5" />
+                                    <GradientStop Color="Transparent" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+
+                        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" ColumnSpacing="10" RowSpacing="8">
+                            <!-- Kategori -->
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                                <Label Text="📌 Kategori" FontSize="10" TextColor="#94A3B8"/>
+                                <Label x:Name="LabelFuzzyCategory" Text="—" FontSize="13" FontAttributes="Bold" TextColor="White"/>
+                            </VerticalStackLayout>
+                            <!-- Skor Risiko -->
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                                <Label Text="⚡ Skor Risiko" FontSize="10" TextColor="#94A3B8"/>
+                                <Label x:Name="LabelFuzzyRiskScore" Text="—" FontSize="13" FontAttributes="Bold" TextColor="White"/>
+                            </VerticalStackLayout>
+                            <!-- Risk Level -->
+                            <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                <Label Text="🎯 Level Risiko" FontSize="10" TextColor="#94A3B8"/>
+                                <Label x:Name="LabelFuzzyRiskLevel" Text="—" FontSize="15" FontAttributes="Bold" TextColor="#10B981"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Derajat Keanggotaan -->
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="📊 Derajat Keanggotaan" FontSize="10" TextColor="#94A3B8"/>
+                            <Border StrokeShape="RoundRectangle 8" StrokeThickness="0" BackgroundColor="#0F172A" Padding="10,8">
+                                <Label x:Name="LabelFuzzyMembership"
+                                       Text="—"
+                                       FontSize="11"
+                                       TextColor="#E2E8F0"
+                                       FontFamily="OpenSansRegular"
+                                       LineBreakMode="WordWrap"/>
+                            </Border>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ======== DETAIL ANN (NEURAL NETWORK) ======== -->
+                <Border StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="16">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1E293B" Offset="0.0" />
+                            <GradientStop Color="#2A1B3D" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#8B5CF6" Offset="0.0" />
+                            <GradientStop Color="#6C3CE1" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Stroke>
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="🧠" FontSize="13" VerticalOptions="Center"/>
+                            <Label Text="PREDIKSI ANN (NEURAL NETWORK)" FontSize="10" FontAttributes="Bold" TextColor="#C4B5FD" CharacterSpacing="0.5" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <BoxView HeightRequest="1" HorizontalOptions="Fill">
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="Transparent" Offset="0.0" />
+                                    <GradientStop Color="#8B5CF6" Offset="0.5" />
+                                    <GradientStop Color="Transparent" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                <Label Text="🎯 Kelas Prediksi" FontSize="10" TextColor="#94A3B8"/>
+                                <Label x:Name="LabelAnnPrediction" Text="—" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                                <Label x:Name="LabelAnnConfidence" Text="—" FontSize="22" FontAttributes="Bold" TextColor="#A78BFA"/>
+                                <Label Text="Confidence" FontSize="9" TextColor="#94A3B8" HorizontalOptions="End"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Distribusi Probabilitas -->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" BackgroundColor="#0F172A" Padding="12,10">
+                            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" RowSpacing="8" ColumnSpacing="8">
+                                <Label Grid.Row="0" Grid.Column="0" Text="🟢" FontSize="12" VerticalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="Normal" FontSize="12" TextColor="#94A3B8" VerticalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="2" x:Name="LabelAnnNormal" Text="—" FontSize="13" FontAttributes="Bold" TextColor="#10B981" VerticalOptions="Center"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="🟡" FontSize="12" VerticalOptions="Center"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="Prediabetes" FontSize="12" TextColor="#94A3B8" VerticalOptions="Center"/>
+                                <Label Grid.Row="1" Grid.Column="2" x:Name="LabelAnnPrediabetes" Text="—" FontSize="13" FontAttributes="Bold" TextColor="#FBBF24" VerticalOptions="Center"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="🔴" FontSize="12" VerticalOptions="Center"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="Diabetes" FontSize="12" TextColor="#94A3B8" VerticalOptions="Center"/>
+                                <Label Grid.Row="2" Grid.Column="2" x:Name="LabelAnnDiabetes" Text="—" FontSize="13" FontAttributes="Bold" TextColor="#EF4444" VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ======== CATATAN INSTRUMENTASI ======== -->
+                <Border StrokeShape="RoundRectangle 14" StrokeThickness="1" Padding="14">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2A1F0F" Offset="0.0" />
+                            <GradientStop Color="#3D2B0A" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Stroke>
+                        <SolidColorBrush Color="#F59E0B" />
+                    </Border.Stroke>
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Label Text="⚠️" FontSize="18"/>
+                        <VerticalStackLayout>
+                            <Label Text="Catatan Instrumentasi" FontSize="13" FontAttributes="Bold" TextColor="#FBBF24"/>
+                            <Label Text="Sampling rate ADC: 250Hz. Ekstraksi fitur diperbarui tiap 3 detik. Analisis: NLP + Fuzzy Tsukamoto + ANN (4→8→3)." FontSize="11" TextColor="#FCD34D"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- Spacer agar konten tidak tertutup FAB -->
+                <BoxView HeightRequest="80" Color="Transparent"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- ============================================================ -->
+        <!-- LAYER 2: Chatbot Panel (Overlay)                            -->
+        <!-- ============================================================ -->
+        <Grid x:Name="ChatOverlay" IsVisible="False" BackgroundColor="#80000000">
+            <Border StrokeShape="RoundRectangle 20,20,0,0"
+                    StrokeThickness="1"
+                    VerticalOptions="End"
+                    HeightRequest="520"
+                    Margin="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#1A1A2E" Offset="0.0" />
+                        <GradientStop Color="#16213E" Offset="0.5" />
+                        <GradientStop Color="#0F3460" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Stroke>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#6C3CE1" Offset="0.0" />
+                        <GradientStop Color="#14B8A6" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Stroke>
+
+                <Grid RowDefinitions="Auto,*,Auto" Padding="0">
+
+                    <!-- Chat Header -->
+                    <Border Grid.Row="0" StrokeShape="RoundRectangle 20,20,0,0" StrokeThickness="0" Padding="16,12">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Color="#6C3CE1" Offset="0.0" />
+                                <GradientStop Color="#3B82F6" Offset="0.5" />
+                                <GradientStop Color="#14B8A6" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="🤖" FontSize="22" VerticalOptions="Center"/>
+                                <VerticalStackLayout>
+                                    <Label Text="GlucoBot" FontSize="17" FontAttributes="Bold" TextColor="White"/>
+                                    <Label Text="NLP • Fuzzy Logic • ANN" FontSize="10" TextColor="White" Opacity="0.8"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                            <Button Text="✕"
+                                    FontSize="18"
+                                    TextColor="White"
+                                    BackgroundColor="Transparent"
+                                    WidthRequest="40" HeightRequest="40"
+                                    Clicked="OnCloseChatClicked"/>
+                        </FlexLayout>
+                    </Border>
+
+                    <!-- Chat Messages Area -->
+                    <ScrollView Grid.Row="1" x:Name="ChatScrollView" Padding="12,8">
+                        <VerticalStackLayout x:Name="ChatMessagesStack" Spacing="10">
+                            <!-- Pesan akan ditambahkan secara dinamis dari code-behind -->
+                        </VerticalStackLayout>
+                    </ScrollView>
+
+                    <!-- Chat Input Area -->
+                    <Border Grid.Row="2" StrokeShape="RoundRectangle 0" StrokeThickness="0" Padding="12,8,12,12">
+                        <Border.Background>
+                            <SolidColorBrush Color="#0D1B2A" />
+                        </Border.Background>
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                            <Border Grid.Column="0" StrokeShape="RoundRectangle 14" StrokeThickness="1" Stroke="#3B3B5C" BackgroundColor="#16162A" Padding="10,2">
+                                <Entry x:Name="ChatInput"
+                                       Placeholder="Tanya tentang glukosa..."
+                                       PlaceholderColor="#64748B"
+                                       TextColor="White"
+                                       BackgroundColor="Transparent"
+                                       FontSize="14"
+                                       Completed="OnChatInputCompleted"/>
+                            </Border>
+                            <Button Grid.Column="1"
+                                    Text="➤"
+                                    FontSize="20"
+                                    TextColor="White"
+                                    WidthRequest="48" HeightRequest="48"
+                                    CornerRadius="14"
+                                    Clicked="OnSendMessageClicked">
+                                <Button.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#6C3CE1" Offset="0.0" />
+                                        <GradientStop Color="#3B82F6" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Button.Shadow>
+                                    <Shadow Brush="#6C3CE1" Offset="0,2" Radius="8" Opacity="0.4" />
+                                </Button.Shadow>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- ============================================================ -->
+        <!-- LAYER 3: Floating Action Button (FAB) — Toggle Chat         -->
+        <!-- ============================================================ -->
+        <Button x:Name="ChatFab"
+                Text="💬"
+                FontSize="24"
+                TextColor="White"
+                WidthRequest="62" HeightRequest="62"
+                CornerRadius="31"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,20,25"
+                Clicked="OnChatFabClicked">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#6C3CE1" Offset="0.0" />
+                    <GradientStop Color="#3B82F6" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Shadow>
+                <Shadow Brush="#6C3CE1" Offset="0,6" Radius="20" Opacity="0.5" />
+            </Button.Shadow>
+        </Button>
+
+    </Grid>
+</ContentPage>
